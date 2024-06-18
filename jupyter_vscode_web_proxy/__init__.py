@@ -4,6 +4,7 @@ from typing import Any, Callable, Dict, List
 
 """
   "$VSCODE_WEB" serve-local "$EXTENSION_ARG" --port "${PORT}" --host 127.0.0.1 --accept-server-license-terms --without-connection-token --telemetry-level "${TELEMETRY_LEVEL}" > "${LOG_PATH}" 2>&1 &
+  /opt/vscode-web/bin/code-server serve-local --extensions-dir=/opt/vscode-web/extensions --port=9999 --accept-server-license-terms --host=127.0.0.1 --without-connection-token --telemetry-level=off
 
 """
 def _get_code_server_executable(prog):
@@ -24,13 +25,16 @@ def _get_code_server_executable(prog):
 
 def run_vscode_web() -> Dict[str, Any]:
     def _get_cmd(port):
-        extensions_dir = os.getenv("VSCODE_WEB_EXTENSIONS_DIR", "")
+        extension_arg=""
+        extensions_dir = os.getenv("VSCODE_WEB_EXTENSIONS_DIR")
+        if extensions_dir:
+            extension_arg="--extensions-dir=" + extensions_dir
         cmd = [
             _get_code_server_executable('code-server'),
-            'serve-local' + extensions_dir,
+            'serve-local' + extension_arg,
             '--port=' + str(port),
             '--accept-server-license-terms',
-            '--host=127.0.0.1',
+            '--host=0.0.0.0',
             '--without-connection-token',
             '--telemetry-level=off'
         ]

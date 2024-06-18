@@ -24,7 +24,7 @@ def _get_code_server_executable(prog):
 
 def run_vscode_web() -> Dict[str, Any]:
     def _get_cmd(port):
-        extensions_dir = os.getenv("VSCODE_WEB_EXTENSIONSDIR", "")
+        extensions_dir = os.getenv("VSCODE_WEB_EXTENSIONS_DIR", "")
         cmd = [
             _get_code_server_executable('code-server'),
             'serve-local' + extensions_dir,

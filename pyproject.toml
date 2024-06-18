@@ -40,9 +40,10 @@ vscode-web= "jupyter_vscode_web_proxy:run_vscode_web"
 
 
 [tool.hatch.build.targets.wheel]
-packages = ["jupyter_vscode_web_proxy"]
+packages = ["./jupyter_vscode_web_proxy"]
 
 [tool.hatch.build]
+sources = ["."]
 artifacts = [
   "*.svg",
 ]

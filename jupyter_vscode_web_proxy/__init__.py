@@ -36,7 +36,7 @@ def run_vscode_web() -> Dict[str, Any]:
         ]
 
         return cmd
-
+    print(os.path.join(os.path.dirname(os.path.abspath(__file__)), "icons", vscode.svg))
     return {
         "command": _get_cmd,
         "timeout": 300,

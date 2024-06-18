@@ -46,6 +46,7 @@ def run_vscode_web() -> Dict[str, Any]:
         "command": _get_cmd,
         "timeout": 300,
         "new_browser_tab": True,
+        "absolute_url": True,
         "launcher_entry": {
             "title": "VS Code",
             "icon_path": os.path.join(

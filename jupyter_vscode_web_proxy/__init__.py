@@ -31,7 +31,7 @@ def run_vscode_web() -> Dict[str, Any]:
             extension_arg="--extensions-dir=" + extensions_dir
         cmd = [
             _get_code_server_executable('code-server'),
-            'serve-local' + extension_arg,
+             extension_arg,
             '--server-base-path={base_url}vscode-web/',
             '--port=' + str(port),
             '--accept-server-license-terms',
